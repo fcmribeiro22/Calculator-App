@@ -15,19 +15,33 @@ function divide(operand1,operand2){
 };
 
 function operate(operation,operand1,operand2){
-    return operate(operand1,operand2);
+    return operation(operand1,operand2);
 };
+
+function test(){
+    console.log(operator);
+}
+
+
 
 const display = document.querySelector('.display');
 const button = document.querySelectorAll('button');
+const equalButton = document.querySelector('.equals');
+const clearButton = document.querySelector('.clear-button');
+const operatorButtons= document.querySelectorAll('.operator');
+
 document.querySelector('.weird-button').disabled = true;
 document.querySelector('.percentage-button').disabled = true;
 
 let displayValue= 0;
+let firstOperand ="";
+let secondOperand ="";
+let operator= "";
 
 
 
 function displayAfterclick(){
+
    if (display.innerHTML==="0"){
     display.innerHTML ="";
     display.innerHTML += this.value;
@@ -37,8 +51,22 @@ function displayAfterclick(){
     display.innerHTML += this.value;
 }
 displayValue= display.innerHTML;
-console.log(displayValue);
+
 }
+
+function setOperator() {
+    operator = this.value;
+    
+};
+
+function getOperator(){
+    for(let i=0; i<operatorButtons.length; i++){
+        operatorButtons[i].addEventListener('click',setOperator);
+            }
+            
+}
+
+
 
 const toDisplay= () =>{
     for(let i= 0; i<button.length; i++){
@@ -50,7 +78,10 @@ const toDisplay= () =>{
 
 
 
+
+getOperator();
 toDisplay();
+
 
 
 
