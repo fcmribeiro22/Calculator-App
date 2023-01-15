@@ -19,7 +19,7 @@ function operate(operator, operand1, operand2) {
         case "+":
             return add(operand1, operand2);
         case "-":
-            return subtract(operand1, operand2);
+            return substract(operand1, operand2);
         case "*":
             return multiply(operand1, operand2);
         case "/":
@@ -32,36 +32,37 @@ function operate(operator, operand1, operand2) {
 
 
 const display = document.querySelector('.display');
-const button = document.querySelectorAll('button');
+const button = document.querySelectorAll('.button');
 const equalButton = document.querySelector('.equals');
 const clearButton = document.querySelector('.clear-button');
 const operatorButtons= document.querySelectorAll('.operator');
 
-
-let displayValue= 0;
+display.textContent="0";
+let displayValue= "";
 let firstOperand ="";
 let secondOperand ="";
 let operator= "";
 
 
 function clearScreen(){
-
- 
+    
+    display.textContent= "0"
+    firstOperand="";
   secondOperand ="";
   operator= "";
-  display.innerHTML="0";
+  console.log("cleared!")
+  displayValue= "";
 }
 
 
 
-function setOperator() {
-    operator = this.value;
-    
-};
-
-function setOperatorAfterClick(){
+function setOperator(){
     for(let i=0; i<operatorButtons.length; i++){
-        operatorButtons[i].addEventListener('click',setOperator);
+        operatorButtons[i].addEventListener('click',function(){
+            operator = this.value
+
+            console.log(operator);
+        } );
     }
     
 }
@@ -76,15 +77,14 @@ function displayAfterclick(){
         display.innerHTML += this.value;
         firstOperand = display.innerHTML;
     } else {
-        if (display.innerHTML !== "0") {
-            display.innerHTML += this.value;
-            secondOperand = display.innerHTML.substring(firstOperand.length + 1);
-        } else {
-            firstOperand = "0";
-            display.innerHTML = "";
-            display.innerHTML += this.value;
-            secondOperand = display.innerHTML.substring(2);
-        }
+        
+        display.textContent ="";
+        display.textContent= displayValue;
+        displayValue +=this.value;
+        display.textContent=displayValue;
+        secondOperand= displayValue;
+
+      
     }
     console.log(firstOperand);
     console.log(secondOperand);
@@ -106,7 +106,7 @@ equalButton.addEventListener('click', function() {
 });
 
 
-setOperatorAfterClick();
+setOperator();
 toDisplay();
 
 
