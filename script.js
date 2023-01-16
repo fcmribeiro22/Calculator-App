@@ -48,9 +48,8 @@ let result="";
 
 
 function clearScreen(){
-    
-    display.textContent= "0"
-    firstOperand="";
+  display.textContent= "0"
+  firstOperand="";
   secondOperand ="";
   operator= "";
   console.log("cleared!")
@@ -67,22 +66,17 @@ function setOperator(){
                 firstOperand= result;
                 secondOperand= "";
                 displayValue= "";
-
             } else{
                 operator = this.value;
             }
-            
-
-        } );
+            } );
     }
     
 }
 
 
-
 function displayAfterclick(){
     if(display.textContent.length < 35){
-        
         if (operator === ""){
             if (display.innerHTML === "0") {
                 display.innerHTML = "";
@@ -97,11 +91,9 @@ function displayAfterclick(){
             display.innerHTML= displayValue;
             displayValue +=this.value;
             display.textContent=displayValue;
-            secondOperand= displayValue;
-    
-          
+            secondOperand= displayValue;       
         }
-    } else{
+    } else {
         if(operator !== ""){
             if(displayValue < 35){
                 
@@ -119,18 +111,13 @@ function displayAfterclick(){
 
 const toDisplay= () =>{
     for(let i= 0; i<button.length; i++){
-            button[i].addEventListener('click',displayAfterclick);
-            
-            
+            button[i].addEventListener('click',displayAfterclick);        
     }
-    
 }
-
-
 
 clearButton.addEventListener('click',clearScreen);
 equalButton.addEventListener('click', function() {
-     result = operate(operator, Number(firstOperand), Number(secondOperand));
+    result = operate(operator, Number(firstOperand), Number(secondOperand));
     display.textContent = result;
     firstOperand= result;
     secondOperand= "";
@@ -175,11 +162,7 @@ backButton.addEventListener('click', function(){
     } else{
         secondOperand= croppedDis;
     }
-
 })
-
-
-
 
 setOperator();
 toDisplay();
