@@ -37,6 +37,7 @@ const equalButton = document.querySelector('.equals');
 const clearButton = document.querySelector('.clear-button');
 const operatorButtons= document.querySelectorAll('.operator');
 const dotButton= document.querySelector('.dot-button');
+const backButton= document.querySelector('.back-button')
 
 display.textContent="0";
 let displayValue= "";
@@ -165,6 +166,19 @@ dotButton.addEventListener('click', function(){
     }
 
 })
+
+backButton.addEventListener('click', function(){
+    let croppedDis= display.textContent.substring(0,display.textContent.length-1 );
+    display.textContent= croppedDis;
+    if(operator === ""){
+        firstOperand= croppedDis;
+    } else{
+        secondOperand= croppedDis;
+    }
+
+})
+
+
 
 
 setOperator();

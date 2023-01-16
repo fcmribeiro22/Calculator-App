@@ -26,3 +26,12 @@
 .zero-button{
     grid-column: 1 / 3;
   }
+
+
+.clear-button{
+    grid-column: 1 / 3;
+}
+
+.back-button{
+    font-size: 25px;
+}
