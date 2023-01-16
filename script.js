@@ -80,23 +80,37 @@ function setOperator(){
 
 
 function displayAfterclick(){
-    if (operator === ""){
-        if (display.innerHTML === "0") {
-            display.innerHTML = "";
-        } 
-        display.innerHTML += this.value;
-        firstOperand = display.innerHTML;
-    } else {
-        if (display.innerHTML === "0") {
-            firstOperand= "0";
-        } 
-        display.textContent ="";
-        display.innerHTML= displayValue;
-        displayValue +=this.value;
-        display.textContent=displayValue;
-        secondOperand= displayValue;
-
-      
+    if(display.textContent.length < 35){
+        
+        if (operator === ""){
+            if (display.innerHTML === "0") {
+                display.innerHTML = "";
+            } 
+            display.innerHTML += this.value;
+            firstOperand = display.innerHTML;
+        } else {
+            if (display.innerHTML === "0") {
+                firstOperand= "0";
+            } 
+            display.textContent ="";
+            display.innerHTML= displayValue;
+            displayValue +=this.value;
+            display.textContent=displayValue;
+            secondOperand= displayValue;
+    
+          
+        }
+    } else{
+        if(operator !== ""){
+            if(displayValue < 35){
+                
+                display.textContent ="";
+                display.innerHTML= displayValue;
+                displayValue +=this.value;
+                display.textContent=displayValue;
+                secondOperand= displayValue;
+            }
+        }
     }
     console.log(firstOperand);
     console.log(secondOperand);
