@@ -66,6 +66,7 @@ function setOperator(){
                 firstOperand= result;
                 secondOperand= "";
                 displayValue= "";
+                operator= this.value;
             } else{
                 operator = this.value;
             }
@@ -123,7 +124,6 @@ equalButton.addEventListener('click', function() {
     secondOperand= "";
     operator= "";
     displayValue= "";
-
     console.log(result);
     console.log(firstOperand);
     console.log(secondOperand);
