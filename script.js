@@ -36,6 +36,7 @@ const button = document.querySelectorAll('.button');
 const equalButton = document.querySelector('.equals');
 const clearButton = document.querySelector('.clear-button');
 const operatorButtons= document.querySelectorAll('.operator');
+const dotButton= document.querySelector('.dot-button');
 
 display.textContent="0";
 let displayValue= "";
@@ -54,7 +55,6 @@ function clearScreen(){
   console.log("cleared!")
   displayValue= "";
 }
-
 
 
 function setOperator(){
@@ -112,6 +112,7 @@ const toDisplay= () =>{
 }
 
 
+
 clearButton.addEventListener('click',clearScreen);
 equalButton.addEventListener('click', function() {
      result = operate(operator, Number(firstOperand), Number(secondOperand));
@@ -126,8 +127,34 @@ equalButton.addEventListener('click', function() {
     console.log(secondOperand);
 });
 
+dotButton.addEventListener('click', function(){
+    
+    if(displayValue !== ""){
+        if(displayValue.indexOf(".")===-1){
+            let restartValue= ".";
+            this.value= restartValue;
+            display.textContent += this.value;
+            displayValue += this.value;
+        } else{
+            this.value="";
+        }
+
+    } else{
+        if(display.textContent.indexOf(".")===-1){
+            let restartValue= ".";
+            this.value= restartValue;
+            display.textContent += this.value;
+        }else{
+            this.value ="";
+        }
+
+    }
+
+})
+
 
 setOperator();
 toDisplay();
+
 
 
