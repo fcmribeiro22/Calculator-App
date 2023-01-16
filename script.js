@@ -39,7 +39,7 @@ const operatorButtons= document.querySelectorAll('.operator');
 
 display.textContent="0";
 let displayValue= "";
-let firstOperand ="";
+let firstOperand = "0";
 let secondOperand ="";
 let operator= "";
 let result="";
@@ -60,7 +60,17 @@ function clearScreen(){
 function setOperator(){
     for(let i=0; i<operatorButtons.length; i++){
         operatorButtons[i].addEventListener('click',function(){
-            operator = this.value
+            if(firstOperand && secondOperand && operator){
+                result = operate(operator, Number(firstOperand), Number(secondOperand));
+                display.textContent = result;
+                firstOperand= result;
+                secondOperand= "";
+                displayValue= "";
+
+            } else{
+                operator = this.value;
+            }
+            
 
         } );
     }
@@ -77,7 +87,9 @@ function displayAfterclick(){
         display.innerHTML += this.value;
         firstOperand = display.innerHTML;
     } else {
-        
+        if (display.innerHTML === "0") {
+            firstOperand= "0";
+        } 
         display.textContent ="";
         display.innerHTML= displayValue;
         displayValue +=this.value;
