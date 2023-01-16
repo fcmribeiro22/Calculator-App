@@ -25,7 +25,7 @@ function operate(operator, operand1, operand2) {
         case "/":
             return divide(operand1, operand2);
         default:
-            return "Invalid operator";
+            return firstOperand;
     }
 
 }
@@ -42,6 +42,7 @@ let displayValue= "";
 let firstOperand ="";
 let secondOperand ="";
 let operator= "";
+let result="";
 
 
 function clearScreen(){
@@ -61,7 +62,6 @@ function setOperator(){
         operatorButtons[i].addEventListener('click',function(){
             operator = this.value
 
-            console.log(operator);
         } );
     }
     
@@ -79,7 +79,7 @@ function displayAfterclick(){
     } else {
         
         display.textContent ="";
-        display.textContent= displayValue;
+        display.innerHTML= displayValue;
         displayValue +=this.value;
         display.textContent=displayValue;
         secondOperand= displayValue;
@@ -94,6 +94,7 @@ const toDisplay= () =>{
     for(let i= 0; i<button.length; i++){
             button[i].addEventListener('click',displayAfterclick);
             
+            
     }
     
 }
@@ -101,8 +102,16 @@ const toDisplay= () =>{
 
 clearButton.addEventListener('click',clearScreen);
 equalButton.addEventListener('click', function() {
-    let result = operate(operator, Number(firstOperand), Number(secondOperand));
+     result = operate(operator, Number(firstOperand), Number(secondOperand));
     display.textContent = result;
+    firstOperand= result;
+    secondOperand= "";
+    operator= "";
+    displayValue= "";
+
+    console.log(result);
+    console.log(firstOperand);
+    console.log(secondOperand);
 });
 
 
