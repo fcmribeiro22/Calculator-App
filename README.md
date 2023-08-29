@@ -2,4 +2,4 @@
 
 #Live Preview:
 
-https://fcmribeiro22.github.io/Project-Calculator/
+https://fcmribeiro22.github.io/Calculator-App/
